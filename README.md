@@ -4,6 +4,7 @@
 - [Logistic 함수](#Logistic-Function)
 - [오차 역전파](#Propagation)
 - [최적화 과정](#Optimize)
+###
 
 ## Logistic Function
 독립변수의 선형 결합을 이용해 어떤 사건의 발생 확률을 예측하는 함수.  
@@ -15,6 +16,8 @@ sigmoid함수는 대표적인 logistic 함수로 0~1 값 사이의 미분 가능
 def logistic(z):
     return 1/(1+np.exp(-z)) # z = wx + b (w: weight, b: bias, x: data)
 ~~~
+###
+
 ## Propagation
 학습이 이루어지기 위해선 현재 자신이 가지고있는 가중치가 정답에 근접한지 먼저 판단해야 한다.  
 따라서 첫번째 정답 예측값인 Y_hat을 먼저 구해줘야 한다.
@@ -35,7 +38,9 @@ eps=1e-5
 cost = -1 / m * np.sum(Y * np.log(Y_hat+eps) + (1 - Y) * np.log(1 - Y_hat + eps))
 ~~~
 여기서 eps(epsilon)을 추가한 이유는 혹시나 log연산에 있어서 마이너스 무한대로 수렴했을때 연산오류가 발생하기 때문이다.
-이제 cost를 기반으로 오차가 최소값을 가지도록 weight와 bias를 업데이트하는 과정을 확인해 보자.   
+이제 cost를 기반으로 오차가 최소값을 가지도록 weight와 bias를 업데이트하는 과정을 확인해 보자.
+###
+
 ## Optimize 
 경사 하강법은 결국 cost function의 기울기를 계산해서 최소 값에 근접하도록 만드는 알고리즘이다.  
 여러번의 iteration을 반복하면서 학습률(learning rate)을 기반으로 최소값을 찾아가는 과정을 구현해 본다.
@@ -49,4 +54,6 @@ db = 1 / m * np.sum(Y_hat - Y)
 w = w - learning_rate * dw
 b = b - learning_rate * db
 ~~~
+###
+
 
