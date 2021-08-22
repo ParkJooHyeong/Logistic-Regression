@@ -8,9 +8,6 @@ data = pd.read_csv("data/framingham.csv")
 # model 학습 시키기
 model = ml.model(X,Y,num_iterations=5000,learning_rate=0.01,print_cost=True)
 
-# 평가 데이터 준비하기
-tX = test_data.iloc[:, [1,2]].to_numpy()
-tY = test_data.Sale.to_numpy().reshape(1,tX.shape[0])
 
 # 결과 확인하기
 print("각 데이터별 에측값 :", ml.predict(model,tX))
